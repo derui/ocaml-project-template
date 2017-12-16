@@ -9,6 +9,9 @@ tags: []
 build: [
   "topkg" "build" "-n" name
 ]
+install: [
+  "jbuilder" "install" "-n" name
+]
 depends: [
   "ocamlfind" {build}
   "cmdliner" {>= "1.0.2"}
