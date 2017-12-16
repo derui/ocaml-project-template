@@ -7,10 +7,7 @@ bug-reports: "https://github.com/derui/jsoo-template"
 dev-repo: "https://github.com/derui/jsoo-template"
 tags: []
 build: [
-  "topkg" "build" "-n" name
-]
-install: [
-  "jbuilder" "install" "-n" name
+  "ocaml" "pkg/pkg.ml" "build" "-n" name "--dev-pkg" "%{pinned}%"
 ]
 depends: [
   "ocamlfind" {build}
