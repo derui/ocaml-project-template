@@ -1,0 +1,18 @@
+opam-version: "1.2"
+maintainer: "derutakayu@gmail.com"
+authors: "derui"
+license: "MIT"
+homepage: "https://github.com/derui/jsoo-template"
+bug-reports: "https://github.com/derui/jsoo-template"
+dev-repo: "https://github.com/derui/jsoo-template"
+tags: []
+build: [
+  "topkg" "build" "-n" name
+]
+depends: [
+  "ocamlfind" {build}
+  "cmdliner" {>= "1.0.2"}
+  "topkg" {build & >= "0.9.1"}
+  "jbuilder" {build & >= "1.0+beta16"}
+]
+available: [ocaml-version >= "4.05.0"]
