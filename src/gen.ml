@@ -15,13 +15,18 @@ build: [
 ]
 depends: [
   "jbuilder" {build & >= "1.0+beta16"}
-  "ocamlfind" {build}
-  "commonjs_of_ocaml" {build & >= "0.1.0"}
+  "ocamlfind"
+  "commonjs_of_ocaml" {>= "0.1.0"}
   "js_of_ocaml" {build & >= "2.8.4"}
   "js_of_ocaml-ppx" {build & >= "2.8.4"}
 ]
 available: [ocaml-version >= "4.05.0"]
 |}
+
+let topkg_template = {|
+#use "topfind"
+#require "topkg-jbuilder.auto"
+                      |}
 
 let project =
   let doc = "Target directory for project" in
@@ -31,7 +36,21 @@ let license =
   let doc = "The LISENCE of project" in
   Arg.(value & opt string "MIT" & info ["";"lisence"] ~docv:"LISENCE" ~doc)
 
-let gen project license =
+
+let gen_topkg project =
+  let pkg_path = Filename.concat project "pkg" in
+  if not @@ Sys.file_exists pkg_path then
+    Unix.mkdir pkg_path 0o755
+  else
+    ();
+
+  let pkg_name = Filename.concat pkg_path "pkg.ml" in
+  let os = open_out pkg_name in
+  try
+    output_string os topkg_template
+  with _ -> close_out os
+
+let gen_opam project license =
   let regex = Str.regexp "<license>" in
   let license_replaced = Str.replace_first regex license opam_template in
   
@@ -45,6 +64,10 @@ let gen project license =
   try
     output_string os license_replaced
   with _ -> close_out os
+
+let gen project license =
+  gen_opam project license;
+  gen_topkg project
 
 let gen_t = Term.(const gen $ project $ license)
 

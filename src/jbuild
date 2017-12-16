@@ -4,5 +4,5 @@
  ((name gen)
   (public_name ocaml-project-template)
   (package ocaml-project-template)
-  (libraries (cmdliner str))
+  (libraries (cmdliner str unix))
 ))
