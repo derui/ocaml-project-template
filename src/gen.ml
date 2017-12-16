@@ -33,7 +33,7 @@ let license =
 
 let gen project license =
   let regex = Str.regexp "<license>" in
-  let license_replaced = Str.replace_first regex opam_template license in
+  let license_replaced = Str.replace_first regex license opam_template in
   
   if not @@ Sys.file_exists project then
     Term.exit ~term_err:1 (`Error `Exn)
