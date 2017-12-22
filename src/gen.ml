@@ -16,9 +16,8 @@ build: [
 depends: [
   "jbuilder" {build & >= "1.0+beta16"}
   "ocamlfind"
-  "commonjs_of_ocaml" {>= "0.1.0"}
-  "js_of_ocaml" {build & >= "2.8.4"}
-  "js_of_ocaml-ppx" {build & >= "2.8.4"}
+  "js_of_ocaml" {build & >= "3.0.2"}
+  "js_of_ocaml-ppx" {build & >= "3.0.2"}
 ]
 available: [ocaml-version >= "4.05.0"]
 |}
