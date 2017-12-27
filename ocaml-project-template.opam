@@ -10,9 +10,7 @@ tags: []
 build: [
   ["jbuilder" "subst"] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
-]
-build: [
-  ["jbuilder" "runtest" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {test}
 ]
 depends: [
   "ocamlfind" {build}
