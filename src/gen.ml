@@ -101,7 +101,7 @@ let info =
     `S Manpage.s_bugs;
     `P "Email bug reports to <derutakayu@gmail.com>." ]
   in
-  Term.info "ocaml-project-template" ~version:"%‌%VERSION%%" ~doc ~exits:Term.default_exits ~man
+  Term.info "ocaml-project-template" ~version:"‌0.1.0" ~doc ~exits:Term.default_exits ~man
 
 let () =
   Term.exit @@ Term.eval (gen_t, info)
