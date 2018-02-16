@@ -29,10 +29,10 @@ build: [
   "jbuilder" "build" "-p" name "-j" jobs
 ]
 depends: [
-  "jbuilder" {build & >= "1.0+beta16"}
+  "jbuilder" { >= "1.0+beta16"}
   "ocamlfind"
-  "js_of_ocaml" {build & >= "3.0.2"}
-  "js_of_ocaml-ppx" {build & >= "3.0.2"}
+  "js_of_ocaml" { >= "3.0.2"}
+  "js_of_ocaml-ppx" { >= "3.0.2"}
 ]
 available: [ocaml-version >= "4.05.0"]
 |}
@@ -47,8 +47,8 @@ let project =
   Arg.(value & opt string "." & info ["p"; "project"] ~docv:"project" ~doc)
 
 let license =
-  let doc = "The LISENCE of project" in
-  Arg.(value & opt string "MIT" & info ["";"lisence"] ~docv:"LISENCE" ~doc)
+  let doc = "The LICENSE of project" in
+  Arg.(value & opt string "MIT" & info ["license"] ~docv:"LICENSE" ~doc)
 
 let gen_topkg project =
   let pkg_path = Filename.concat project "pkg" in
